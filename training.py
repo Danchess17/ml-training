@@ -1,5 +1,6 @@
 from keras.optimizers import *
 from keras.losses import *
+from keras.metrics import *
 from model import MyUnet
 from preproccesing import dataset_padding, without_padding
 from keras import backend as be
@@ -21,7 +22,7 @@ be.clear_session()
 
 model.compile(optimizer=Adam(learning_rate=1e-4),
               loss=CategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+              metrics=[MeanIoU(numclasses=7)])
 print('compiled')
 
 history = model.fit(X_train[:2000], y_train[:2000], epochs=7, batch_size=1, validation_data=(X_val, y_val))
