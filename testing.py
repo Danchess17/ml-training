@@ -20,7 +20,7 @@ print(get_lens(image_dir, mask_dir))
 print(check(image_dir, mask_dir))
 # i need to split train into train/test and do it with masks too
 
-# i took random 707 test images 
+# i took first 707 test images 
 
 def GenerateDatasetFolder():
     pathlib.Path('dataset/images').mkdir(parents=True, exist_ok=True) 
